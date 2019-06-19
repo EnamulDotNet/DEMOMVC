@@ -24,3 +24,29 @@ c:\users\super\documents\visual studio 2013\Projects\DEMOMVC\DEMOMVC\bin\Antlr3.
 c:\users\super\documents\visual studio 2013\Projects\DEMOMVC\DEMOMVC\obj\Debug\DEMOMVC.csprojResolveAssemblyReference.cache
 c:\users\super\documents\visual studio 2013\Projects\DEMOMVC\DEMOMVC\obj\Debug\DEMOMVC.dll
 c:\users\super\documents\visual studio 2013\Projects\DEMOMVC\DEMOMVC\obj\Debug\DEMOMVC.pdb
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\DEMOMVC.dll.config
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\DEMOMVC.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\DEMOMVC.pdb
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\Antlr3.Runtime.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\Microsoft.Web.Infrastructure.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\Newtonsoft.Json.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Helpers.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Mvc.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Optimization.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Razor.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.WebPages.Deployment.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.WebPages.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.WebPages.Razor.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\WebGrease.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Helpers.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Mvc.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Optimization.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.Razor.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.WebPages.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.WebPages.Deployment.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\System.Web.WebPages.Razor.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\Newtonsoft.Json.xml
+F:\Project\DEMOMVC\trunk\DEMOMVC\bin\Antlr3.Runtime.pdb
+F:\Project\DEMOMVC\trunk\DEMOMVC\obj\Debug\DEMOMVC.csprojResolveAssemblyReference.cache
+F:\Project\DEMOMVC\trunk\DEMOMVC\obj\Debug\DEMOMVC.dll
+F:\Project\DEMOMVC\trunk\DEMOMVC\obj\Debug\DEMOMVC.pdb
