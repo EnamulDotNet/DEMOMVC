@@ -41,31 +41,65 @@
                 <form>
                     <div class="form-group">
                         <label for="EmployeeId">ID</label>
-                        <input type="text" class="form-control" id="EmployeeID" placeholder="Id" disabled="disabled" />
+                        <input type="text" class="form-control" id="EmployeeID" placeholder="Id" disabled="disabled"/>
                     </div>
                     <div class="form-group">
                         <label for="Name">Name</label>
-                        <input type="text" class="form-control" id="Name" placeholder="Name" />
+                        <input type="text" class="form-control" id="Name" placeholder="Name"/>
                     </div>
                     <div class="form-group">
                         <label for="Age">Age</label>
-                        <input type="text" class="form-control" id="Age" placeholder="Age" />
+                        <input type="text" class="form-control" id="Age" placeholder="Age"/>
                     </div>
                     <div class="form-group">
                         <label for="State">State</label>
-                        <input type="text" class="form-control" id="State" placeholder="State" />
+                        <input type="text" class="form-control" id="State" placeholder="State"/>
                     </div>
                     <div class="form-group">
                         <label for="Country">Country</label>
-                        <input type="text" class="form-control" id="Country" placeholder="Country" />
+                        <select class="form-control" id="departmentsDropdown" name="departmentsDropdown"></select>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
-                <button type="button" class="btn btn-primary" id="btnUpdate" style="display:none;" onclick="Update();">Update</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" style="display: none;" onclick="Update();">Update</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
 </div>
+@section Scripts
+{
+
+    @*<script>
+        //for datatable
+        $(document).ready(function() {
+            debugger;
+            var data = '@ViewBag.country';
+            data = data.replace(/\&quot;/g, '"');
+            data = $.parseJSON(data);
+            var s = '<option value="">---Please Select---</option>';
+            for (var i = 0; i < data.length; i++) {
+                s += '<option value="' + data[i].id + '">' + data[i].txt + '</option>';
+            }
+            $("#departmentsDropdown").html(s);
+        });
+    </script>*@
+
+    <script>
+        //for dataset
+        $(document).ready(function() {
+            debugger;
+            var data = '@ViewBag.country';
+            data = data.replace(/\&quot;/g, '"');
+            data = $.parseJSON(data);
+            var s = '<option value="">---Please Select---</option>';
+            for (var i = 0; i < data.dt1.length; i++) {
+                s += '<option value="' + data.dt1[i].id + '">' + data.dt1[i].txt + '</option>';
+            }
+            $("#departmentsDropdown").html(s);
+        });
+    </script>
+
+}

@@ -8,6 +8,7 @@ namespace DEMOMVC.Views.Test
         // GET: /P1/
         public ActionResult Index()
         {
+
             return View("../Test/P3");
         }
 	}
