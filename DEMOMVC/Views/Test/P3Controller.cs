@@ -16,22 +16,40 @@ namespace DEMOMVC.Views.Test
         {
             ViewBag.country = "bd";
             
-    DataTable dt = new DataTable("dt1");  
-    dt.Columns.Add("id");  
-    dt.Columns.Add("txt"); 
-    dt.Rows.Add("1","BD");  
-    dt.Rows.Add("2","IN");
-    dt.Rows.Add("2","usa");
-            for (int i = 0; i < 10000; i++)
+    //DataTable dt = new DataTable("dt1");  
+    //dt.Columns.Add("id");  
+    //dt.Columns.Add("txt"); 
+    //dt.Rows.Add("1","BD");  
+    //dt.Rows.Add("2","IN");
+    //dt.Rows.Add("2","usa");
+    //        for (int i = 0; i < 10000; i++)
+    //        {
+    //            dt.Rows.Add(i.ToString(), "fkhfkfsfj jsjdfj hkh kfsf   fsfsfsfsfsf fff");
+    //        }
+    //DataSet ds1 = new DataSet();
+    //        ds1.Tables.Add(dt);
+    //        string sJSONResponse = JsonConvert.SerializeObject(ds1);
+    //        ViewBag.country = sJSONResponse;
+
+            return View("../Test/P3");
+        }
+
+        public JsonResult PageLoad()
+        {
+            DataTable dt = new DataTable("dt1");
+            dt.Columns.Add("id");
+            dt.Columns.Add("txt");
+            dt.Rows.Add("1", "BD");
+            dt.Rows.Add("2", "IN");
+            dt.Rows.Add("2", "usa");
+            for (int i = 0; i < 100; i++)
             {
                 dt.Rows.Add(i.ToString(), "fkhfkfsfj jsjdfj hkh kfsf   fsfsfsfsfsf fff");
             }
-    DataSet ds1 = new DataSet();
+            DataSet ds1 = new DataSet();
             ds1.Tables.Add(dt);
-            string sJSONResponse = JsonConvert.SerializeObject(ds1);
-            ViewBag.country = sJSONResponse;
+            return Json(JsonConvert.SerializeObject(ds1), JsonRequestBehavior.AllowGet);
 
-            return View("../Test/P3");
         }
 	}
 }
