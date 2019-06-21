@@ -1,8 +1,10 @@
 ﻿@{ ViewBag.Title = "P4"; } 
 
 <div class="container">
-    <h2>Employees Record</h2>
-    <select class="form-control" id="departmentsDropdown" name="departmentsDropdown"></select>
+    <h2>Supplier</h2>
+    <select class="form-control" id="ddlSupp" name="departmentsDropdown"></select>
+    <input type="text" class="form-control" id="txtTrnDate" placeholder="dd-MMM-yyyy" />
+    <button type="button" class="btn btn-primary" id="btnSave">Save</button>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add New Employee</button><br /><br />
     <table id="table1" class="table table-bordered table-condensed table-hover table-striped">
@@ -10,11 +12,13 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>City</th>
-                <th>Address</th>
+                <th>Unit</th>
+                <th>Qty</th>
             </tr>
         </thead>
-        <tbody></tbody>
+        <tbody id="tblBody">
+        
+        </tbody>
     </table> 
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -94,8 +98,9 @@
 
     <script>
         //for dataset
-        $(window).on('load', function() {
-            window.setTimeout(function() {
+        //$( document ).ready(function() {
+        $(window).on('load', function() { //for after entire page load
+            window.setTimeout(function() { //for quick page load then bind data silently, useful in onload
                 //alert('as');
                 debugger;
                 $.ajax({
@@ -111,15 +116,15 @@
                         for (var i = 0; i < data.dt1.length; i++) {
                             s += '<option value="' + data.dt1[i].id + '">' + data.dt1[i].txt + '</option>';
                         }
-                        $("#departmentsDropdown").html(s);
+                        $("#ddlSupp").html(s);
                         //bind table
                         //Append each row to html table  
                         for (var i = 0; i < data.dt2.length; i++) {
                              var rows = "<tr>" +
                                 "<td>" + data.dt2[i].id + "</td>" +
                                 "<td>" + data.dt2[i].name + "</td>" +
-                                "<td>" + data.dt2[i].city + "</td>" +
-                                "<td>" + data.dt2[i].address + "</td>" +
+                                "<td>" + data.dt2[i].unit + "</td>" +
+                                "<td>" + data.dt2[i].qty + "</td>" +
                                 "</tr>";
                             $('#table1 tbody').append(rows);
                             
@@ -133,7 +138,49 @@
         });
 </script>
     <script>
-        
+        $(document).ready(function () {
+            //$('#btnAdd').click(function () {
+            //    var _tblBOdy = '';
+            //    _tblBOdy += '<tr> <td>' + $('#drpProduct').val() + '</td> <td>' + $('#drpProduct option:selected').text() + '</td> <td>' + $('#drpUnit').val() + ' </td> <td>' + $('#drpUnit option:selected').text() + ' </td> <td> ' + $('#txtQty').val() + '</td><td> ' + $('#txtRate').val() + '</td></tr>';
+            //    $('#tblBody').append(_tblBOdy);
+            //});
+
+
+            $('#btnSave').click(function () {
+                var _master = {
+                    SuppId: $('#ddlSupp').val(),
+                    TrnDat: $('#txtTrnDate').val(),
+                    Dt1: new Array()
+            };
+
+                $('#table1 tbody tr').each(function () {
+                    var _temp = {};
+                     _temp.ItemId = $(this).find('td:eq(0)').text().trim();
+                     _temp.Qty = $(this).find('td:eq(3)').text().trim();
+                    _master.Dt1.push(_temp);
+
+                });
+
+                console.log(JSON.stringify(_master));
+
+                var _jdata = JSON.stringify(_master);
+                $.ajax({
+                    type: 'POST',
+                    url: '/P3/Save',
+                    contentType: 'application/json; charset=utf-8;',
+                    data: _jdata,
+                    dataType: 'json',
+                    success: function (d) {
+                        alert('data saved!!');
+                    }, error: function (err) {
+                        alert(err);
+                    }
+                })
+
+            })
+
+
+        })
 
     </script>
 
