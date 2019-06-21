@@ -5,31 +5,17 @@
     <select class="form-control" id="departmentsDropdown" name="departmentsDropdown"></select>
 
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="clearTextBox();">Add New Employee</button><br /><br />
-    <table class="table table-bordered table-hover">
+    <table id="table1" class="table table-bordered table-condensed table-hover table-striped">
         <thead>
             <tr>
-                <th>
-                    ID
-                </th>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Age
-                </th>
-                <th>
-                    State
-                </th>
-                <th>
-                    Country
-                </th>
-                <th>
-                    Action
-                </th>
+                <th>Id</th>
+                <th>Name</th>
+                <th>City</th>
+                <th>Address</th>
             </tr>
         </thead>
-        <tbody class="tbody"></tbody>
-    </table>
+        <tbody></tbody>
+    </table> 
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -115,6 +101,7 @@
                 $.ajax({
                     type: 'GET',
                     url: '/P3/PageLoad',
+                    contentType: "application/json; charset=utf-8",
                     dataType: 'json',
                     data: {},
                     success: function (data) {
@@ -125,6 +112,18 @@
                             s += '<option value="' + data.dt1[i].id + '">' + data.dt1[i].txt + '</option>';
                         }
                         $("#departmentsDropdown").html(s);
+                        //bind table
+                        //Append each row to html table  
+                        for (var i = 0; i < data.dt2.length; i++) {
+                             var rows = "<tr>" +
+                                "<td>" + data.dt2[i].id + "</td>" +
+                                "<td>" + data.dt2[i].name + "</td>" +
+                                "<td>" + data.dt2[i].city + "</td>" +
+                                "<td>" + data.dt2[i].address + "</td>" +
+                                "</tr>";
+                            $('#table1 tbody').append(rows);
+                            
+                        }
                     },
                     error: function () {
                         alert("fail");

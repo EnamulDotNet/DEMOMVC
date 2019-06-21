@@ -48,6 +48,28 @@ namespace DEMOMVC.Views.Test
             }
             DataSet ds1 = new DataSet();
             ds1.Tables.Add(dt);
+
+            dt=new DataTable("dt2");
+            dt.Columns.Add("id");
+            dt.Columns.Add("name");
+            dt.Columns.Add("city");
+            dt.Columns.Add("address");
+            for (int i = 0; i < 1000; i++)
+            {
+                dt.Rows.Add(i.ToString(), "Name" + i, "City" + i, "Aaddress" + i);
+            }
+            ds1.Tables.Add(dt);
+
+
+
+
+
+
+
+
+
+
+
             return Json(JsonConvert.SerializeObject(ds1), JsonRequestBehavior.AllowGet);
 
         }
