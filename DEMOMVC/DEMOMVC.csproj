@@ -109,7 +109,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\P3\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -123,6 +122,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\Test\P2Controller.cs" />
     <Compile Include="Views\Test\P1Controller.cs" />
+    <Compile Include="Views\Test\TableEditDelete1Controller.cs" />
+    <Compile Include="Views\Test\TableEditDeleteController.cs" />
     <Compile Include="Views\Test\P3Controller.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,8 @@
     <Content Include="Views\Test\P1.cshtml" />
     <Content Include="Views\Test\P2.cshtml" />
     <Content Include="Views\Test\P3.cshtml" />
+    <Content Include="Views\Test\TableEditDelete.cshtml" />
+    <Content Include="Views\Test\TableEditDelete1.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

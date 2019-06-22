@@ -1,0 +1,115 @@
+﻿
+<div class="container">
+    <h1>Add Edit Delete Table Row Example using JQuery - ItSolutionStuff.com</h1>
+
+ 
+        <div class="form-group">
+            <label>Name:</label>
+            <input id="txtName" type="text" name="name" class="form-control" value="Paresh" required="">
+        </div>
+
+        <div class="form-group">
+            <label>Email:</label>
+            <input id="txtEmail" type="text" name="email" class="form-control" value="paresh@gmail.com" required="">
+        </div>
+
+        <button id="btnAdd" type="submit" class="btn btn-success save-btn">Add</button>
+
+    
+    <br />
+    <table id="table1" class="table table-bordered data-table">
+        <thead>
+        <th>Name</th>
+        <th>Email</th>
+        <th width="200px">Action</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+       var currentRow = null;
+       $('#btnAdd').click(function () {
+           var rows = "<tr>" +
+                                "<td>" + $("#txtName").val() + "</td>" +
+                                "<td>" + $("#txtEmail").val() + "</td>" +
+                                "<td><button class='btn btn-info btn-xs' onclick='productDisplay(this);'>Edit</button>&nbsp;&nbsp;" +
+                                "<button class='btn btn-danger btn-xs' onclick='productDelete(this);'>Delete</button></td>" +
+                                "</tr>";
+           if (currentRow) {
+               $("#btnAdd").text("Add");
+               $("#txtName").val('');
+               $("#txtEmail").val('');
+               $("#table1 tbody").find($(currentRow)).replaceWith(rows);
+               
+                currentRow = null;
+            }
+            else {
+                //productUpdateInTable($("#hdnRowId").val());
+                
+                $('#table1 tbody').append(rows);
+                $("#txtName").val('');
+                $("#txtEmail").val('');
+
+            }
+            
+        });
+        function productDisplay(ctl) {
+            _row = $(ctl).parents("tr");
+            $("#txtName").val(_row.find('td:eq(0)').text());
+            $("#txtEmail").val(_row.find('td:eq(1)').text());
+            $("#btnAdd").text("Update");
+            var a = $(ctl).closest("tr").index();
+            //$("#hdnRowId").val(a);
+            //alert($("#hdnRowId").val());
+            currentRow = $(ctl).parents('tr');
+        }
+        function productUpdateInTable(rowIndex) {
+            //alert(rowIndex);
+        }
+        function productDelete(ctl) {
+            $(ctl).parents("tr").remove();
+        }
+        
+
+        $("body").on("click", ".btn-edit", function() {
+            var name = $(this).parents("tr").attr('data-name');
+            var email = $(this).parents("tr").attr('data-email');
+
+            $(this).parents("tr").find("td:eq(0)").html('<input name="edit_name" value="' + name + '">');
+            $(this).parents("tr").find("td:eq(1)").html('<input name="edit_email" value="' + email + '">');
+
+            $(this).parents("tr").find("td:eq(2)").prepend("<button class='btn btn-info btn-xs btn-update'>Update</button><button class='btn btn-warning btn-xs btn-cancel'>Cancel</button>")
+            $(this).hide();
+        });
+
+        $("body").on("click", ".btn-cancel", function() {
+            var name = $(this).parents("tr").attr('data-name');
+            var email = $(this).parents("tr").attr('data-email');
+
+            $(this).parents("tr").find("td:eq(0)").text(name);
+            $(this).parents("tr").find("td:eq(1)").text(email);
+
+            $(this).parents("tr").find(".btn-edit").show();
+            $(this).parents("tr").find(".btn-update").remove();
+            $(this).parents("tr").find(".btn-cancel").remove();
+        });
+
+        $("body").on("click", ".btn-update", function() {
+            var name = $(this).parents("tr").find("input[name='edit_name']").val();
+            var email = $(this).parents("tr").find("input[name='edit_email']").val();
+
+            $(this).parents("tr").find("td:eq(0)").text(name);
+            $(this).parents("tr").find("td:eq(1)").text(email);
+
+            $(this).parents("tr").attr('data-name', name);
+            $(this).parents("tr").attr('data-email', email);
+
+            $(this).parents("tr").find(".btn-edit").show();
+            $(this).parents("tr").find(".btn-cancel").remove();
+            $(this).parents("tr").find(".btn-update").remove();
+        });
+
+    </script>
+}
